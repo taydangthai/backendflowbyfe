@@ -2,8 +2,6 @@ package com.finalsem.projectsem4.service;
 
 import com.finalsem.projectsem4.common.ResponseBuilder;
 import com.finalsem.projectsem4.dto.ProductDTO;
-import com.finalsem.projectsem4.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 

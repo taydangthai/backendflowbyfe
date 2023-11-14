@@ -1,10 +1,8 @@
 package com.finalsem.projectsem4.controller;
 
 import com.finalsem.projectsem4.common.ResponseBuilder;
-import com.finalsem.projectsem4.dto.ProductDTO;
 import com.finalsem.projectsem4.dto.RatingsDTO;
 import com.finalsem.projectsem4.service.RatingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

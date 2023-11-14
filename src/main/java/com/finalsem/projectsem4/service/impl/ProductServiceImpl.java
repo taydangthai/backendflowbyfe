@@ -4,19 +4,16 @@ import com.finalsem.projectsem4.common.DateTimeUtil;
 import com.finalsem.projectsem4.common.ResponseBuilder;
 import com.finalsem.projectsem4.dto.ProductDTO;
 import com.finalsem.projectsem4.dto.ProductImagesDTO;
-import com.finalsem.projectsem4.entity.ProductImages;
 import com.finalsem.projectsem4.entity.Products;
 import com.finalsem.projectsem4.repository.ProductImagesRepository;
 import com.finalsem.projectsem4.repository.ProductRepository;
 import com.finalsem.projectsem4.service.ProductImageService;
 import com.finalsem.projectsem4.service.ProductService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
