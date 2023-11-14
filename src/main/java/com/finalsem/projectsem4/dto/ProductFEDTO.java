@@ -30,8 +30,6 @@ public class ProductFEDTO extends AbstractDTO {
     private Long saleCount;
     private List<String> category;
     private List<String> tag;
-    @JsonIgnore
-    private List<VariationDTO> variation;
     private List<String> thumbImage;
     private List<String> image;
     private String shortDescription;

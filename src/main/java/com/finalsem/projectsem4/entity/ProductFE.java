@@ -61,8 +61,8 @@ public class ProductFE extends BaseEntity {
     @Column(name = "tag")
     private List<String> tag;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Variation> variations;
+    /*@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Variation> variations;*/
 
     @ElementCollection
     @CollectionTable(name = "product_thumb_images", joinColumns = @JoinColumn(name = "product_id"))
