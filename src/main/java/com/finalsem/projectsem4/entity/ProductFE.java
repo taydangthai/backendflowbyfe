@@ -51,28 +51,17 @@ public class ProductFE extends BaseEntity {
     @Column(name = "sale_count")
     private Long saleCount;
 
-    @ElementCollection
-    @CollectionTable(name = "product_categories", joinColumns = @JoinColumn(name = "product_id"))
-    @Column(name = "category")
-    private List<String> category;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CategoryFE> category;
 
-    @ElementCollection
-    @CollectionTable(name = "product_tags", joinColumns = @JoinColumn(name = "product_id"))
-    @Column(name = "tag")
-    private List<String> tag;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TagFE> tag;
 
-    /*@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Variation> variations;*/
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ThumbImageFE> thumbImage;
 
-    @ElementCollection
-    @CollectionTable(name = "product_thumb_images", joinColumns = @JoinColumn(name = "product_id"))
-    @Column(name = "thumb_image")
-    private List<String> thumbImage;
-
-    @ElementCollection
-    @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
-    @Column(name = "image")
-    private List<String> image;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ImageFE> image;
 
     @Column(name = "short_description", length = 1000)
     private String shortDescription;
