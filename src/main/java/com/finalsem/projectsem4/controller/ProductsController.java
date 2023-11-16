@@ -71,7 +71,7 @@ public class ProductsController {
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
-    @GetMapping("/getList")
+    /*@GetMapping("/getList")
     ResponseEntity<?> getAllProductsFE() {
         ResponseBuilder<List<ProductFEDTO>> resp = new ResponseBuilder<>(null,null,null);
         List<ProductFEDTO> list = Arrays.asList(new ProductFEDTO(
@@ -163,5 +163,5 @@ public class ProductsController {
         resp.setData(list);
         log.info(resp.getData().toString());
         return new ResponseEntity<>(resp, HttpStatus.OK);
-    }
+    }*/
 }

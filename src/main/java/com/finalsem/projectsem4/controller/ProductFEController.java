@@ -23,7 +23,7 @@ public class ProductFEController {
     @Autowired
     private ProductFEService feService;
 
-    @GetMapping("/getList")
+    @GetMapping("/getListFE")
     ResponseEntity<?> getAllProducts() {
         ResponseBuilder<List<ProductFEDTO>> resp = feService.getListProduct();
         return new ResponseEntity<>(resp, HttpStatus.OK);

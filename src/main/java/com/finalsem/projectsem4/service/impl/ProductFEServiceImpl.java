@@ -2,7 +2,9 @@ package com.finalsem.projectsem4.service.impl;
 
 import com.finalsem.projectsem4.common.ResponseBuilder;
 import com.finalsem.projectsem4.dto.ProductFEDTO;
-import com.finalsem.projectsem4.entity.ProductFE;
+import com.finalsem.projectsem4.dto.VariationFEDTO;
+import com.finalsem.projectsem4.entity.*;
+import com.finalsem.projectsem4.mapper.EntityToDTOMapper;
 import com.finalsem.projectsem4.repository.ProductsFERepository;
 import com.finalsem.projectsem4.service.ProductFEService;
 import org.modelmapper.ModelMapper;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductFEServiceImpl implements ProductFEService {
@@ -21,10 +24,43 @@ public class ProductFEServiceImpl implements ProductFEService {
     public ResponseBuilder<List<ProductFEDTO>> getListProduct() {
         List<ProductFE> productFES = productsFERepository.findAll();
         List<ProductFEDTO> productDTOS = new ArrayList<>();
-        ModelMapper modelMapper = new ModelMapper();
         for (ProductFE productFE: productFES) {
-            ProductFEDTO mapped = modelMapper.map(productFE, ProductFEDTO.class);
-            productDTOS.add(mapped);
+            ProductFEDTO productFEDTO = new ProductFEDTO();
+            productFEDTO.setId(productFE.getId());
+            productFEDTO.setCreateDate(productFE.getCreateDate());
+            productFEDTO.setSku(productFE.getSku());
+            productFEDTO.setName(productFE.getName());
+            productFEDTO.setSlug(productFE.getSlug());
+            productFEDTO.setPrice(productFE.getPrice());
+            productFEDTO.setDiscount(productFE.getDiscount());
+            productFEDTO.setFeatured(productFE.getFeatured());
+            productFEDTO.setNewPro(productFE.getNewPro());
+            productFEDTO.setRating(productFE.getRating());
+            productFEDTO.setRatingCount(productFE.getRatingCount());
+            productFEDTO.setSaleCount(productFE.getSaleCount());
+            productFEDTO.setShortDescription(productFE.getShortDescription());
+            productFEDTO.setFullDescription(productFE.getFullDescription());
+            List<String> stringCategoryList = productFE.getCategory().stream()
+                    .map(CategoryFE::getName)
+                    .collect(Collectors.toList());
+            List<String> stringTagList = productFE.getTag().stream()
+                    .map(TagFE::getName)
+                    .collect(Collectors.toList());
+            List<String> stringThumbImageList = productFE.getThumbImage().stream()
+                    .map(ThumbImageFE::getUrl)
+                    .collect(Collectors.toList());
+            List<String> stringImageList = productFE.getImage().stream()
+                    .map(ImageFE::getUrl)
+                    .collect(Collectors.toList());
+            List<VariationFEDTO> fedtoList = productFE.getVariationFES().stream()
+                    .map(variationFE -> EntityToDTOMapper.mapVariationToDTO(variationFE))
+                    .collect(Collectors.toList());
+            productFEDTO.setVariation(fedtoList);
+            productFEDTO.setCategory(stringCategoryList);
+            productFEDTO.setTag(stringTagList);
+            productFEDTO.setThumbImage(stringThumbImageList);
+            productFEDTO.setImage(stringImageList);
+            productDTOS.add(productFEDTO);
         }
         return new ResponseBuilder<>("00","success", productDTOS);
     }

@@ -10,13 +10,12 @@ import java.util.List;
 /**
  * @author silen
  */
-@EqualsAndHashCode(callSuper = true)
+
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+//@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ProductFEDTO extends AbstractDTO {
+public class ProductFEDTO {
+    private Long id;
     private Date createDate;
     private String sku;
     private String name;
@@ -32,7 +31,10 @@ public class ProductFEDTO extends AbstractDTO {
     private List<String> tag;
     private List<String> thumbImage;
     private List<String> image;
+    private List<VariationFEDTO> variation;
     private String shortDescription;
     private String fullDescription;
 
+    public ProductFEDTO() {
+    }
 }

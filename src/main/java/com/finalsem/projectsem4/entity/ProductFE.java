@@ -63,6 +63,9 @@ public class ProductFE extends BaseEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImageFE> image;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VariationFE> variationFES;
+
     @Column(name = "short_description", length = 1000)
     private String shortDescription;
 
