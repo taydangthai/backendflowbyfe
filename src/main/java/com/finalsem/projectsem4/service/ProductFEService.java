@@ -8,4 +8,5 @@ import java.util.List;
 public interface ProductFEService {
 
     ResponseBuilder<List<ProductFEDTO>> getListProduct();
+    ResponseBuilder<ProductFEDTO> getProductByName(String name);
 }
